@@ -7,6 +7,7 @@ libc.so.6
 libcairo-gobject.so.2
 libcairo-script-interpreter.so.2
 libcairo.so.2
+libcups.so.2
 libepoxy.so.0
 libfontconfig.so.1
 libfribidi.so.0

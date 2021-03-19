@@ -4,7 +4,7 @@
 #
 Name     : gtk4
 Version  : 4.0.3
-Release  : 1
+Release  : 2
 URL      : https://download.gnome.org/sources/gtk/4.0/gtk-4.0.3.tar.xz
 Source0  : https://download.gnome.org/sources/gtk/4.0/gtk-4.0.3.tar.xz
 Summary  : GTK Graphical UI Library
@@ -19,6 +19,9 @@ BuildRequires : Vulkan-Headers-dev
 BuildRequires : Vulkan-Loader-dev
 BuildRequires : buildreq-gnome
 BuildRequires : buildreq-meson
+BuildRequires : colord-dev
+BuildRequires : cups
+BuildRequires : cups-dev
 BuildRequires : glslang
 BuildRequires : gtk-doc-dev
 BuildRequires : json-glib-dev
@@ -109,7 +112,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1616165801
+export SOURCE_DATE_EPOCH=1616182409
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -559,8 +562,8 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/gtk-4.0/4.0.0/media/libmedia-ffmpeg.so
 /usr/lib64/gtk-4.0/4.0.0/media/libmedia-gstreamer.so
 /usr/lib64/gtk-4.0/4.0.0/printbackends/libprintbackend-cloudprint.so
+/usr/lib64/gtk-4.0/4.0.0/printbackends/libprintbackend-cups.so
 /usr/lib64/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so
-/usr/lib64/gtk-4.0/4.0.0/printbackends/libprintbackend-lpr.so
 /usr/lib64/libgtk-4.so.1
 /usr/lib64/libgtk-4.so.1.0.3
 
