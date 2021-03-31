@@ -4,7 +4,7 @@
 #
 Name     : gtk4
 Version  : 4.2.0
-Release  : 3
+Release  : 4
 URL      : https://download.gnome.org/sources/gtk/4.2/gtk-4.2.0.tar.xz
 Source0  : https://download.gnome.org/sources/gtk/4.2/gtk-4.2.0.tar.xz
 Summary  : GObject-Introspection based documentation generator
