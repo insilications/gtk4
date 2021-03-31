@@ -135,6 +135,7 @@ libgtk-4.so.1:gdk_device_get_scroll_lock_state
 libgtk-4.so.1:gdk_device_get_seat
 libgtk-4.so.1:gdk_device_get_source
 libgtk-4.so.1:gdk_device_get_surface_at_position
+libgtk-4.so.1:gdk_device_get_timestamp
 libgtk-4.so.1:gdk_device_get_type
 libgtk-4.so.1:gdk_device_get_vendor_id
 libgtk-4.so.1:gdk_device_has_bidi_layouts
@@ -368,6 +369,7 @@ libgtk-4.so.1:gdk_popup_layout_get_anchor_hints
 libgtk-4.so.1:gdk_popup_layout_get_anchor_rect
 libgtk-4.so.1:gdk_popup_layout_get_offset
 libgtk-4.so.1:gdk_popup_layout_get_rect_anchor
+libgtk-4.so.1:gdk_popup_layout_get_shadow_width
 libgtk-4.so.1:gdk_popup_layout_get_surface_anchor
 libgtk-4.so.1:gdk_popup_layout_get_type
 libgtk-4.so.1:gdk_popup_layout_new
@@ -376,6 +378,7 @@ libgtk-4.so.1:gdk_popup_layout_set_anchor_hints
 libgtk-4.so.1:gdk_popup_layout_set_anchor_rect
 libgtk-4.so.1:gdk_popup_layout_set_offset
 libgtk-4.so.1:gdk_popup_layout_set_rect_anchor
+libgtk-4.so.1:gdk_popup_layout_set_shadow_width
 libgtk-4.so.1:gdk_popup_layout_set_surface_anchor
 libgtk-4.so.1:gdk_popup_layout_unref
 libgtk-4.so.1:gdk_popup_present
@@ -636,6 +639,7 @@ libgtk-4.so.1:gsk_color_matrix_node_new
 libgtk-4.so.1:gsk_color_node_get_color
 libgtk-4.so.1:gsk_color_node_get_type
 libgtk-4.so.1:gsk_color_node_new
+libgtk-4.so.1:gsk_conic_gradient_node_get_angle
 libgtk-4.so.1:gsk_conic_gradient_node_get_center
 libgtk-4.so.1:gsk_conic_gradient_node_get_color_stops
 libgtk-4.so.1:gsk_conic_gradient_node_get_n_color_stops
@@ -701,6 +705,8 @@ libgtk-4.so.1:gsk_linear_gradient_node_get_n_color_stops
 libgtk-4.so.1:gsk_linear_gradient_node_get_start
 libgtk-4.so.1:gsk_linear_gradient_node_get_type
 libgtk-4.so.1:gsk_linear_gradient_node_new
+libgtk-4.so.1:gsk_ngl_renderer_get_type
+libgtk-4.so.1:gsk_ngl_renderer_new
 libgtk-4.so.1:gsk_opacity_node_get_child
 libgtk-4.so.1:gsk_opacity_node_get_opacity
 libgtk-4.so.1:gsk_opacity_node_get_type
@@ -789,6 +795,7 @@ libgtk-4.so.1:gsk_text_node_get_glyphs
 libgtk-4.so.1:gsk_text_node_get_num_glyphs
 libgtk-4.so.1:gsk_text_node_get_offset
 libgtk-4.so.1:gsk_text_node_get_type
+libgtk-4.so.1:gsk_text_node_has_color_glyphs
 libgtk-4.so.1:gsk_text_node_new
 libgtk-4.so.1:gsk_texture_node_get_texture
 libgtk-4.so.1:gsk_texture_node_get_type
@@ -1859,6 +1866,7 @@ libgtk-4.so.1:gtk_expression_ref
 libgtk-4.so.1:gtk_expression_unref
 libgtk-4.so.1:gtk_expression_watch
 libgtk-4.so.1:gtk_expression_watch_evaluate
+libgtk-4.so.1:gtk_expression_watch_get_type
 libgtk-4.so.1:gtk_expression_watch_ref
 libgtk-4.so.1:gtk_expression_watch_unref
 libgtk-4.so.1:gtk_expression_watch_unwatch
@@ -2204,6 +2212,7 @@ libgtk-4.so.1:gtk_icon_theme_get_resource_path
 libgtk-4.so.1:gtk_icon_theme_get_search_path
 libgtk-4.so.1:gtk_icon_theme_get_theme_name
 libgtk-4.so.1:gtk_icon_theme_get_type
+libgtk-4.so.1:gtk_icon_theme_has_gicon
 libgtk-4.so.1:gtk_icon_theme_has_icon
 libgtk-4.so.1:gtk_icon_theme_lookup_by_gicon
 libgtk-4.so.1:gtk_icon_theme_lookup_icon
@@ -2283,11 +2292,13 @@ libgtk-4.so.1:gtk_im_context_focus_in
 libgtk-4.so.1:gtk_im_context_focus_out
 libgtk-4.so.1:gtk_im_context_get_preedit_string
 libgtk-4.so.1:gtk_im_context_get_surrounding
+libgtk-4.so.1:gtk_im_context_get_surrounding_with_selection
 libgtk-4.so.1:gtk_im_context_get_type
 libgtk-4.so.1:gtk_im_context_reset
 libgtk-4.so.1:gtk_im_context_set_client_widget
 libgtk-4.so.1:gtk_im_context_set_cursor_location
 libgtk-4.so.1:gtk_im_context_set_surrounding
+libgtk-4.so.1:gtk_im_context_set_surrounding_with_selection
 libgtk-4.so.1:gtk_im_context_set_use_preedit
 libgtk-4.so.1:gtk_im_context_simple_add_compose_file
 libgtk-4.so.1:gtk_im_context_simple_add_table
@@ -4587,6 +4598,7 @@ libgtk-4.so.1:gtk_window_get_destroy_with_parent
 libgtk-4.so.1:gtk_window_get_focus
 libgtk-4.so.1:gtk_window_get_focus_visible
 libgtk-4.so.1:gtk_window_get_group
+libgtk-4.so.1:gtk_window_get_handle_menubar_accel
 libgtk-4.so.1:gtk_window_get_hide_on_close
 libgtk-4.so.1:gtk_window_get_icon_name
 libgtk-4.so.1:gtk_window_get_mnemonics_visible
@@ -4628,6 +4640,7 @@ libgtk-4.so.1:gtk_window_set_destroy_with_parent
 libgtk-4.so.1:gtk_window_set_display
 libgtk-4.so.1:gtk_window_set_focus
 libgtk-4.so.1:gtk_window_set_focus_visible
+libgtk-4.so.1:gtk_window_set_handle_menubar_accel
 libgtk-4.so.1:gtk_window_set_hide_on_close
 libgtk-4.so.1:gtk_window_set_icon_name
 libgtk-4.so.1:gtk_window_set_interactive_debugging

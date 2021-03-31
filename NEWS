@@ -1,55 +1,220 @@
-Overview of Changes in 4.0.3
+Overview of Changes in 4.2.0
 ============================
 
-* GtkWidget:
- - Enforce the can-focus property
+* GtkFileChooser: Make the location entry work again
 
-* GtkVideo:
- - Avoid tearing when using gstreamer with GL
+* GtlLabel: Fix tooltips on links
 
-* Accessibility:
- - Speed up cache population
- - Make context realization lazier
-
-* CSS:
- - Fix shadow transitions
-
-* Themes:
- - Adwaita: Allow suggested and destructive action in lists
-
-* GDK:
- - Remove warnings about exceeding size bounds
-
-* Vulkan:
- - Fix uploading image regions
-
-* Wayland:
- - Abort if the shared memory pool cannot be created
- - Explicitly announce ssd for kwin
- - Signal gtk-shell surface destruction to mutter
+* GtkTextView: Make scrolling work better with renderers
 
 * X11:
- - Fix several DND problems
+ - Fix damage handling
+ - Trap errors from the COW
 
 * Windows:
- - Avoid UAC in gtk4-update-icon-cache on 32bit Windows
+ - Use a visible scroll cursor
+ - Include more icons for icon-theme-less situations
 
-* MacOS:
- - Use correct module file extension
+* Wayland: Fix key event matching with mismatched layouts.
+  This was causing keyboard accelerators to trigger unexpectedly
 
-* tools:
- - Make gtk-builder-tool translate GtkImage:pixbuf to :file
+* Inspector: Allow inspecting Unicode
+
+* Input:
+ - Improve dead key handling
+ - Regenerate compose sequence table
+
+* gsk:
+ - Fix a crash in the ngl renderer
+ - Fix a rounding error in subpixel glyph positioning
+ - ngl: Implement glyph cache eviction
+ - ngl: Improve the glyph cache effectiveness
+ - ngl: Fix uniform key mapping on Windows
+ - Make the ngl renderer the default
+
+* build:
+ - Fix build with cairo as subproject
+ - Disable g_assert in release builds
+ - Include gi-docgen as subproject
+ - Include generated docs
 
 * Translation updates:
- Brazilian Portuguese
- Czech
- Galician
- Greek
+ Hebrew
+ Hungarian
+ Italian
+ Polish
  Portuguese
- Punjabi
- Slovenian
- Spanish
  Swedish
+ Ukrainian
+
+
+Overview of Changes in 4.1.2
+============================
+
+* Input:
+ - Ensure preedit-start and preedit-end
+   are emitted properly
+ - Support the Wayland text protocol better
+ - Delete the selection when preedit starts
+
+* Label: Fix a small issue with markup parsing
+  and mnemonics
+
+* Spinbutton: Interpret localized digits
+
+* Textview: Fix blinking block cursors
+
+* Tooltips: Don't pop up erroneous on popovers
+
+* Window: Add a way to disable F10 handling
+
+* Theme:
+ - Use a regular focus ring for sidebar rows
+
+* GSK
+ - ngl: Performance improvements
+ - vulkan: Add visible fallback rendering
+ - vukan: Handle simple transforms when clipping
+
+* Wayland:
+ - Don't force a full redraw for every frame
+ - Don't leak buffers when rendering with cairo
+
+* Demos:
+ - iconbrowser: Make search more useful
+
+* Documentation:
+ - Switch to building docs from gir files with gi-docgen
+
+* build:
+ - Allow GTK to be used as meson subproject
+
+* Translation updates
+ Catalan
+ Czech
+ Finnish
+ French
+ Indonesian
+ Kazakh
+ Latvian
+ Norwegian Bokmål
+ Polish
+ Serbian
+ Turkish
+
+
+Overview of Changes in 4.1.1
+============================
+
+* Popover:
+ - Support shadows on popover > contents
+
+* Input:
+ - Show preedit for compose sequences
+ - Support long compose sequences
+ - Support compose sequences producing multiple characters
+
+* Themes:
+ - Allow suggested and destructive actions in lists
+ - Disable shadows on maximized, fullscreen and tiled windows
+ - Fine-tune scrollbar transitions and size
+
+* CSS:
+ - Support drop-shadow filters
+ - Correct blur filter spread interpretation
+
+* Documentation:
+ - Improvements and updates for dialogs and native dialog
+
+* Printing:
+ - Support Avahi-discovered printers better
+
+* GSK:
+ - Add another OpenGL render. It is not the default yet.
+   To try it, use GSK_RENDERER=ngl
+
+* Build:
+ - Lots of static analysis fixes found by pvs
+ - Add a -Dprofile=devel option for devel styling and
+   use it for nightly flatpaks
+
+* X11:
+ - Fix DND of X11-specific types
+
+* Wayland:
+ - Fix lookup of font settings in flatpaks
+
+* Windows:
+ - Fix window resizing
+ - Avoid UAC for gtk-update-icon-cache
+
+* MacOs:
+ - Use correct module file extension
+ - Make OpenGL context opaque when possible
+ - Fix window resizing
+
+* Translation updates:
+ British English
+ Czech
+ Danish
+ Galician
+ Hungarian
+ Turkish
+
+
+Overview of Changes in 4.1.0
+============================
+
+* GtkCheckButton:
+ - Add back an activate signal
+
+* GtkSearchBar, GtkSearchEntry:
+ - Capture events in the bubble phase
+
+* GtkEmojiChooser:
+ - Adapt to small screen sizes
+
+* GtkVideo:
+ - Fix issues with GL support
+
+* Themes:
+ - Set sort arrows in CSS
+ - Set menu button arrows in CSS
+ - Make scrollbars larger
+ - Supprt circular menubuttons
+
+* CSS:
+ - Implement transform-origin
+ - Support overlines on text
+ - Support colors in cross-fade()
+ - More complete text-decoration-line support
+
+* Text layout:
+ - Use subpixel positioning with new enough cairo
+
+* Inspector:
+ - Fix slowness in navigation
+ - Redo the controllers and shortcuts pages
+
+* Accessibility:
+ - Create AT context objects lazily
+
+* Wayland:
+ - Fix decoration negotiation under kwin
+
+* GSK:
+ - Optimize gradient shaders
+ - Implement repeating gradients in shaders
+
+* Translation updates
+ - Czech
+ - Greek
+ - Hungarian
+ - Persian
+ - Punjabi
+ - Romanian
+ - Swedish
+ - Ukrainian
 
 
 Overview of Changes in 4.0.2

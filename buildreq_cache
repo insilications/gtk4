@@ -1,13 +1,11 @@
-4.0.3
+4.2.0
 Vulkan-Headers-dev
-gtk-doc-dev
 json-glib-dev
 librsvg-dev
-pkgconfig(cairo-script-interpreter)
+pkgconfig(gi-docgen)
 pkgconfig(graphene-gobject-1.0)
 pkgconfig(gstreamer-gl-1.0)
 pkgconfig(gstreamer-player-1.0)
-pkgconfig(gtk-doc)
 pkgconfig(iso-codes)
 pkgconfig(json-glib-1.0)
 pkgconfig(libavcodec)
