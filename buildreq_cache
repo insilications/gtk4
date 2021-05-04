@@ -1,9 +1,7 @@
-4.2.0
+4.2.1
 Vulkan-Headers-dev
 json-glib-dev
 librsvg-dev
-pkgconfig(gi-docgen)
-pkgconfig(graphene-gobject-1.0)
 pkgconfig(gstreamer-gl-1.0)
 pkgconfig(gstreamer-player-1.0)
 pkgconfig(iso-codes)
