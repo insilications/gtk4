@@ -1,13 +1,6 @@
-4.2.1
-Vulkan-Headers-dev
-json-glib-dev
+4.4.0
 librsvg-dev
-pkgconfig(gstreamer-gl-1.0)
 pkgconfig(gstreamer-player-1.0)
 pkgconfig(iso-codes)
-pkgconfig(json-glib-1.0)
-pkgconfig(libavcodec)
 pkgconfig(librsvg-2.0)
-pkgconfig(rest-0.7)
-rest-dev
 sassc
