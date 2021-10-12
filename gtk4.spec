@@ -4,7 +4,7 @@
 #
 Name     : gtk4
 Version  : 4.4.0
-Release  : 6
+Release  : 7
 URL      : https://download.gnome.org/sources/gtk/4.4/gtk-4.4.0.tar.xz
 Source0  : https://download.gnome.org/sources/gtk/4.4/gtk-4.4.0.tar.xz
 Summary  : GObject-Introspection based documentation generator
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : Apache-2.0 CC-BY-SA-3.0 CC0-1.0 GPL-3.0 LGPL-2.0 LGPL-2.1 MIT OFL-1.1
 Requires: gtk4-bin = %{version}-%{release}
 Requires: gtk4-data = %{version}-%{release}
+Requires: gtk4-filemap = %{version}-%{release}
 Requires: gtk4-lib = %{version}-%{release}
 Requires: gtk4-license = %{version}-%{release}
 Requires: gtk4-locales = %{version}-%{release}
@@ -27,6 +28,7 @@ BuildRequires : librsvg-dev
 BuildRequires : pkgconfig(gstreamer-player-1.0)
 BuildRequires : pkgconfig(iso-codes)
 BuildRequires : pkgconfig(librsvg-2.0)
+BuildRequires : pygobject
 BuildRequires : sassc
 
 %description
@@ -42,6 +44,7 @@ Summary: bin components for the gtk4 package.
 Group: Binaries
 Requires: gtk4-data = %{version}-%{release}
 Requires: gtk4-license = %{version}-%{release}
+Requires: gtk4-filemap = %{version}-%{release}
 
 %description bin
 bin components for the gtk4 package.
@@ -68,11 +71,20 @@ Requires: gtk4 = %{version}-%{release}
 dev components for the gtk4 package.
 
 
+%package filemap
+Summary: filemap components for the gtk4 package.
+Group: Default
+
+%description filemap
+filemap components for the gtk4 package.
+
+
 %package lib
 Summary: lib components for the gtk4 package.
 Group: Libraries
 Requires: gtk4-data = %{version}-%{release}
 Requires: gtk4-license = %{version}-%{release}
+Requires: gtk4-filemap = %{version}-%{release}
 
 %description lib
 lib components for the gtk4 package.
@@ -97,13 +109,16 @@ locales components for the gtk4 package.
 %prep
 %setup -q -n gtk-4.4.0
 cd %{_builddir}/gtk-4.4.0
+pushd ..
+cp -a gtk-4.4.0 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1629731488
+export SOURCE_DATE_EPOCH=1634059019
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -114,13 +129,15 @@ export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddiravx2
+ninja -v -C builddiravx2
 
 %check
 export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-meson test -C builddir || :
+meson test -C builddir --print-errorlogs || :
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/gtk4
@@ -134,6 +151,8 @@ cp %{_builddir}/gtk-4.4.0/subprojects/gi-docgen/LICENSES/CC0-1.0.txt %{buildroot
 cp %{_builddir}/gtk-4.4.0/subprojects/gi-docgen/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/gtk4/31a3d460bb3c7d98845187c716a30db81c44b615
 cp %{_builddir}/gtk-4.4.0/subprojects/gi-docgen/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/gtk4/220906dfcc3d3b7f4e18cf8a22454c628ca0ea2e
 cp %{_builddir}/gtk-4.4.0/subprojects/gi-docgen/LICENSES/OFL-1.1.txt %{buildroot}/usr/share/package-licenses/gtk4/8b8a351a8476e37a2c4d398eb1e6c8403f487ea4
+DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang gtk40-properties
 %find_lang gtk40
@@ -153,6 +172,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/bin/gtk4-query-settings
 /usr/bin/gtk4-update-icon-cache
 /usr/bin/gtk4-widget-factory
+/usr/share/clear/optimized-elf/bin*
 
 %files data
 %defattr(-,root,root,-)
@@ -555,6 +575,10 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/pkgconfig/gtk4-x11.pc
 /usr/lib64/pkgconfig/gtk4.pc
 
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-gtk4
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/gtk-4.0/4.0.0/media/libmedia-gstreamer.so
@@ -562,6 +586,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so
 /usr/lib64/libgtk-4.so.1
 /usr/lib64/libgtk-4.so.1.400.0
+/usr/share/clear/optimized-elf/lib*
 
 %files license
 %defattr(0644,root,root,0755)
