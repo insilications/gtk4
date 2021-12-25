@@ -1,0 +1,12 @@
+-Ddefault_library=both
+-Dgtk_doc=false
+-Dx11-backend=true
+-Dwayland-backend=false
+-Dbroadway-backend=false
+-Dwin32-backend=false
+-Dmacos-backend=false
+-Df16c=enabled
+-Dintrospection=enabled
+-Dbuild-examples=false
+-Dinstall-tests=false
+-Dbuild-tests=false

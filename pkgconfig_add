@@ -1,2 +1,5 @@
 # This file contains additional pkgconfig build requirements that did
 # not get picked up automatically. One name per line, no whitespace.
+gstreamer-player-1.0
+iso-codes
+librsvg-2.0

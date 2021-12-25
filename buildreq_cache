@@ -1,6 +1,0 @@
-4.4.1
-librsvg-dev
-pkgconfig(gstreamer-player-1.0)
-pkgconfig(iso-codes)
-pkgconfig(librsvg-2.0)
-pygobject
